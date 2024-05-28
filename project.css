@@ -1,0 +1,54 @@
+
+.display { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 20vh;
+  gap: 20px;
+  }
+
+.items { 
+  max-width: 90%;
+}
+
+
+.left button {
+  display: block;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  transition: transform 0.3s ease;
+}
+
+.left button:hover {
+  transform: scale(1.15);
+
+}
+
+
+.grid-box {
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: 0.5fr 1fr;
+  
+}
+
+.left {
+  text-align: center;
+
+}
+  
+
+.right {
+  text-align: left;
+}
+
+.caption_title{ 
+  color: #c5f5d0;
+}
+
+.f_line { 
+  text-align: center;
+  color: #aeaeae;
+}
