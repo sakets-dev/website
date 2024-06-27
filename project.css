@@ -15,14 +15,13 @@
 .left button {
   display: block;
   width: 100%;
-  border: none;
   cursor: pointer;
   background-color: transparent;
   transition: transform 0.3s ease;
 }
 
 .left button:hover {
-  transform: scale(1.15);
+  transform: scale(1.10);
 
 }
 
