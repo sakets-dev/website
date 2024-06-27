@@ -1,7 +1,7 @@
 body {
     font-family: 'Sarabun', sans-serif;
     margin: 0;
-    background-color: #363636;
+    background-color: #3d3f41;
     animation: fadeInAnimation ease 2s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
