@@ -36,6 +36,7 @@ export default function App() {
         darkMode ? "bg-[#0f0f10] text-gray-100" : "bg-white text-gray-800"
       }`}
     >
+      {/* NAVBAR */}
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
 
       {/* MAIN CONTENT */}
@@ -46,7 +47,7 @@ export default function App() {
             darkMode ? "bg-[#1a1a1d]" : "bg-[#f1f2f4]"
           }`}
         >
-          <h1 className="text-4xl font-bold mb-3">Saket Sharma</h1>
+          <h1 className="text-4xl font-bold mb-3">Hey! I'm Saket Sharma!</h1>
           <p
             className={`leading-relaxed ${
               darkMode ? "text-gray-300" : "text-gray-600"
@@ -84,7 +85,7 @@ export default function App() {
                 {
                   icon: Instagram,
                   label: "Instagram",
-                  tooltip: "saket.s4",
+                  tooltip: "Saket Sharma",
                 },
                 {
                   icon: Mail,
@@ -101,22 +102,31 @@ export default function App() {
                     href={link}
                     target={isClickable ? "_blank" : undefined}
                     rel={isClickable ? "noopener noreferrer" : undefined}
-                    className={`group relative flex flex-col items-center justify-center p-3 rounded-xl hover:shadow-md hover:-translate-y-1 transition-all ${
+                    className={`group relative flex flex-col items-center justify-center p-3 rounded-xl hover:shadow-lg hover:-translate-y-1 hover:scale-105 transition-all ${
                       isClickable ? "cursor-pointer" : ""
                     }`}
                   >
                     {/* Tooltip */}
                     <span
-                      className={`absolute -top-10 px-3 py-1 text-xs rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-all duration-300 ${
+                      className={`absolute -top-11 px-3 py-1 text-xs rounded-md opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 ${
                         darkMode
-                          ? "bg-gray-800 text-gray-100"
-                          : "bg-white text-gray-800"
+                          ? "bg-gray-800 text-gray-100 shadow-[0_0_10px_rgba(255,255,255,0.3)]"
+                          : "bg-white text-gray-900 shadow-[0_0_10px_rgba(0,0,0,0.25)]"
                       }`}
                     >
                       {tooltip}
                     </span>
 
-                    <Icon size={26} />
+                    {/* Icon */}
+                    <div
+                      className={`transition-transform duration-300 group-hover:scale-110 ${
+                        darkMode ? "text-gray-200" : "text-gray-800"
+                      }`}
+                    >
+                      <Icon size={28} />
+                    </div>
+
+                    {/* Label */}
                     <span
                       className={`text-sm mt-1 ${
                         darkMode ? "text-gray-400" : "text-gray-600"
