@@ -48,15 +48,20 @@ export default function App() {
           }`}
         >
           <h1 className="text-4xl font-bold mb-3">Hey! I'm Saket Sharma!</h1>
-          <p
-            className={`leading-relaxed ${
-              darkMode ? "text-gray-300" : "text-gray-600"
-            }`}
-          >
-            I’m a Computer Science & Statistics student at the University of Toronto,
-            passionate about AI, design, and startups. I love building products that merge
-            functionality with aesthetics — technology that just feels right.
-          </p>
+          <div className="space-y-3 leading-relaxed"> <br></br>
+  <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
+    Hi, I’m Saket Sharma, a Computer Science & Statistics student at the University of Toronto.
+  </p>
+  <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
+    I love building products that blend creativity with logic and purpose.
+  </p>
+  <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
+    My curiosity drives me to explore everything, from new frameworks to hidden details in everyday design.
+  </p>
+  <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
+    When I’m not coding, I’m probably reading, lately, I’ve been obsessed with the author Freida McFadden.
+  </p>
+</div>
         </section>
 
         {/* RIGHT SIDE */}
