@@ -1,21 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Github, Linkedin, Instagram, Mail } from "lucide-react";
 import Navbar from "./components/Navbar";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import Projects from "./pages/Projects";
+import Other from "./pages/Other";
 
-export default function App() {
-  // 🌙 Start in dark mode by default
-  const [darkMode, setDarkMode] = useState(true);
-
-  useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add("dark-mode");
-      document.documentElement.classList.add("dark-mode");
-    } else {
-      document.body.classList.remove("dark-mode");
-      document.documentElement.classList.remove("dark-mode");
-    }
-  }, [darkMode]);
-
+// HOME PAGE
+function Home({ darkMode }) {
   const icons = [
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
@@ -32,146 +23,133 @@ export default function App() {
   ];
 
   return (
-    <div
-      className={`min-h-screen transition-colors duration-500 ${
-        darkMode ? "bg-[#0f0f10] text-gray-100" : "bg-white text-gray-800"
-      }`}
-    >
-      {/* NAVBAR */}
-      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+    <main className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mt-24 px-4">
+      {/* INTRO */}
+      <section
+        className={`rounded-3xl p-10 col-span-2 shadow-sm transition-all ${
+          darkMode ? "bg-[#1a1a1d]" : "bg-[#f1f2f4]"
+        }`}
+      >
+        <h1 className="text-4xl font-bold mb-3">Hey, I'm Saket!</h1>
+        <div className="space-y-3 leading-relaxed">
+          <br />
+          <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
+            I'm Saket Sharma, a student at University of Toronto, double majoring in Computer Science and Statistics.
+          </p>
+          <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
+            I love building products that blend creativity with logic and purpose.
+          </p>
+          <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
+            My curiosity drives me to explore everything, from new frameworks to hidden details in everyday design.
+          </p>
+          <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
+            When I’m not coding, I’m probably reading. Recently I've been reading thriller/mystery books.
+          </p>
+        </div>
+      </section>
 
-      {/* MAIN CONTENT */}
-      <main className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mt-24 px-4">
-        {/* INTRO */}
-        <section
-          className={`rounded-3xl p-10 col-span-2 shadow-sm transition-all ${
+      {/* RIGHT SIDE */}
+      <aside className="flex flex-col gap-6">
+        {/* SOCIAL ICONS */}
+        <div
+          className={`rounded-3xl p-6 shadow-sm ${
             darkMode ? "bg-[#1a1a1d]" : "bg-[#f1f2f4]"
           }`}
         >
-          <h1 className="text-4xl font-bold mb-3">Hey, I'm Saket!</h1>
-          <div className="space-y-3 leading-relaxed">
-            <br />
-            <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
-              I'm Saket Sharma, a student at University of Toronto, double majoring in Computer Science and Statistics.
-            </p>
-            <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
-              I love building products that blend creativity with logic and purpose.
-            </p>
-            <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
-              My curiosity drives me to explore everything, from new frameworks to hidden details in everyday design.
-            </p>
-            <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
-              When I’m not coding, I’m probably reading. Recently I've been reading thriller/mystery books.
-            </p>
-          </div>
-        </section>
+          <h2 className="text-lg font-semibold mb-4">Connect</h2>
+          <div className="grid grid-cols-2 gap-4">
+            {[
+              {
+                icon: Linkedin,
+                label: "LinkedIn",
+                link: "https://www.linkedin.com/in/saket-sharma-3a37871a7/",
+                tooltip: "Saket Sharma",
+              },
+              {
+                icon: Github,
+                label: "GitHub",
+                link: "https://github.com/sakets-dev",
+                tooltip: "GitHub",
+              },
+              {
+                icon: Instagram,
+                label: "Instagram",
+                tooltip: "Saket Sharma",
+              },
+              {
+                icon: Mail,
+                label: "Mail",
+                tooltip: "saketsharma0406@gmail.com",
+              },
+            ].map(({ icon: Icon, label, link, tooltip }) => {
+              const isClickable = !!link;
+              const Container = isClickable ? "a" : "div";
 
-        {/* RIGHT SIDE */}
-        <aside className="flex flex-col gap-6">
-          {/* SOCIAL ICONS */}
-          <div
-            className={`rounded-3xl p-6 shadow-sm ${
-              darkMode ? "bg-[#1a1a1d]" : "bg-[#f1f2f4]"
-            }`}
-          >
-            <h2 className="text-lg font-semibold mb-4">Connect</h2>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                {
-                  icon: Linkedin,
-                  label: "LinkedIn",
-                  link: "https://www.linkedin.com/in/saket-sharma-3a37871a7/",
-                  tooltip: "Saket Sharma",
-                },
-                {
-                  icon: Github,
-                  label: "GitHub",
-                  link: "https://github.com/sakets-dev",
-                  tooltip: "GitHub",
-                },
-                {
-                  icon: Instagram,
-                  label: "Instagram",
-                  tooltip: "Saket Sharma",
-                },
-                {
-                  icon: Mail,
-                  label: "Mail",
-                  tooltip: "saketsharma0406@gmail.com",
-                },
-              ].map(({ icon: Icon, label, link, tooltip }) => {
-                const isClickable = !!link;
-                const Container = isClickable ? "a" : "div";
-
-                return (
-                  <Container
-                    key={label}
-                    href={link}
-                    target={isClickable ? "_blank" : undefined}
-                    rel={isClickable ? "noopener noreferrer" : undefined}
-                    className={`group relative flex flex-col items-center justify-center p-3 rounded-xl hover:shadow-lg hover:-translate-y-1 hover:scale-105 transition-all ${
-                      isClickable ? "cursor-pointer" : ""
+              return (
+                <Container
+                  key={label}
+                  href={link}
+                  target={isClickable ? "_blank" : undefined}
+                  rel={isClickable ? "noopener noreferrer" : undefined}
+                  className={`group relative flex flex-col items-center justify-center p-3 rounded-xl hover:shadow-lg hover:-translate-y-1 hover:scale-105 transition-all ${
+                    isClickable ? "cursor-pointer" : ""
+                  }`}
+                >
+                  <span
+                    className={`absolute -top-11 px-3 py-1 text-xs rounded-md opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 ${
+                      darkMode
+                        ? "bg-gray-800 text-gray-100 shadow-[0_0_10px_rgba(255,255,255,0.3)]"
+                        : "bg-white text-gray-900 shadow-[0_0_10px_rgba(0,0,0,0.25)]"
                     }`}
                   >
-                    {/* Tooltip */}
-                    <span
-                      className={`absolute -top-11 px-3 py-1 text-xs rounded-md opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 ${
-                        darkMode
-                          ? "bg-gray-800 text-gray-100 shadow-[0_0_10px_rgba(255,255,255,0.3)]"
-                          : "bg-white text-gray-900 shadow-[0_0_10px_rgba(0,0,0,0.25)]"
-                      }`}
-                    >
-                      {tooltip}
-                    </span>
+                    {tooltip}
+                  </span>
 
-                    {/* Icon */}
-                    <div
-                      className={`transition-transform duration-300 group-hover:scale-110 ${
-                        darkMode ? "text-gray-200" : "text-gray-800"
-                      }`}
-                    >
-                      <Icon size={28} />
-                    </div>
+                  <div
+                    className={`transition-transform duration-300 group-hover:scale-110 ${
+                      darkMode ? "text-gray-200" : "text-gray-800"
+                    }`}
+                  >
+                    <Icon size={28} />
+                  </div>
 
-                    {/* Label */}
-                    <span
-                      className={`text-sm mt-1 ${
-                        darkMode ? "text-gray-400" : "text-gray-600"
-                      }`}
-                    >
-                      {label}
-                    </span>
-                  </Container>
-                );
-              })}
-            </div>
+                  <span
+                    className={`text-sm mt-1 ${
+                      darkMode ? "text-gray-400" : "text-gray-600"
+                    }`}
+                  >
+                    {label}
+                  </span>
+                </Container>
+              );
+            })}
           </div>
+        </div>
 
-          {/* GOALS */}
-          <div
-            className={`rounded-3xl p-6 shadow-sm ${
-              darkMode ? "bg-[#1a1a1d]" : "bg-[#f1f2f4]"
+        {/* GOALS */}
+        <div
+          className={`rounded-3xl p-6 shadow-sm ${
+            darkMode ? "bg-[#1a1a1d]" : "bg-[#f1f2f4]"
+          }`}
+        >
+          <h2 className="text-lg font-semibold mb-2">Next Goals</h2>
+          <ul
+            className={`text-sm leading-relaxed space-y-2 ${
+              darkMode ? "text-gray-400" : "text-gray-600"
             }`}
           >
-            <h2 className="text-lg font-semibold mb-2">Next Goals</h2>
-            <ul
-              className={`text-sm leading-relaxed space-y-2 ${
-                darkMode ? "text-gray-400" : "text-gray-600"
-              }`}
-            >
-              <li>
-                <strong>Working on:</strong> A Productivity app
-              </li>
-              <li>
-                <strong>Want to learn:</strong> More Machine Learning
-              </li>
-              <li>
-                <strong>Next goal:</strong> Win a couple upcoming hackathons
-              </li>
-            </ul>
-          </div>
-        </aside>
-      </main>
+            <li>
+              <strong>Working on:</strong> A Productivity app
+            </li>
+            <li>
+              <strong>Want to learn:</strong> More Machine Learning
+            </li>
+            <li>
+              <strong>Next goal:</strong> Win a couple upcoming hackathons
+            </li>
+          </ul>
+        </div>
+      </aside>
 
       {/* ICON SCROLLER */}
       <div
@@ -192,6 +170,37 @@ export default function App() {
           </div>
         </div>
       </div>
-    </div>
+    </main>
+  );
+}
+
+// APP
+export default function App() {
+  const [darkMode, setDarkMode] = useState(true);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark-mode", darkMode);
+    document.body.classList.toggle("dark-mode", darkMode);
+  }, [darkMode]);
+
+  return (
+    <Router>
+      <div
+        className={`min-h-screen transition-colors duration-500 ${
+          darkMode ? "bg-[#0f0f10] text-gray-100" : "bg-white text-gray-800"
+        }`}
+      >
+        <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+
+        <Routes>
+          {/* ✅ Default route (when site loads) */}
+          <Route path="/" element={<Home darkMode={darkMode} />} />
+          {/* ✅ Fallback route (redirect invalid paths to Home) */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/projects" element={<Projects darkMode={darkMode} />} />
+          <Route path="/other" element={<Other darkMode={darkMode} />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
