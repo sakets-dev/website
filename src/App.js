@@ -3,7 +3,8 @@ import { Github, Linkedin, Instagram, Mail } from "lucide-react";
 import Navbar from "./components/Navbar";
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  // 🌙 Start in dark mode by default
+  const [darkMode, setDarkMode] = useState(true);
 
   useEffect(() => {
     if (darkMode) {
@@ -48,20 +49,21 @@ export default function App() {
           }`}
         >
           <h1 className="text-4xl font-bold mb-3">Hey! I'm Saket Sharma!</h1>
-          <div className="space-y-3 leading-relaxed"> <br></br>
-  <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
-    Hi, I’m Saket Sharma, a Computer Science & Statistics student at the University of Toronto.
-  </p>
-  <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
-    I love building products that blend creativity with logic and purpose.
-  </p>
-  <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
-    My curiosity drives me to explore everything, from new frameworks to hidden details in everyday design.
-  </p>
-  <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
-    When I’m not coding, I’m probably reading, lately, I’ve been obsessed with the author Freida McFadden.
-  </p>
-</div>
+          <div className="space-y-3 leading-relaxed">
+            <br />
+            <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
+              Hey there, I'm a student at University of Toronto, double majoring in Computer Science and Statistics.
+            </p>
+            <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
+              I love building products that blend creativity with logic and purpose.
+            </p>
+            <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
+              My curiosity drives me to explore everything, from new frameworks to hidden details in everyday design.
+            </p>
+            <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
+              When I’m not coding, I’m probably reading — lately, I've been reading Freida McFadden's thriller/mystery books.
+            </p>
+          </div>
         </section>
 
         {/* RIGHT SIDE */}
@@ -158,13 +160,13 @@ export default function App() {
               }`}
             >
               <li>
-                <strong>Working on:</strong> AI Learning Copilot
+                <strong>Working on:</strong> A Productivity app
               </li>
               <li>
-                <strong>Want to learn:</strong> TypeScript, FastAPI
+                <strong>Want to learn:</strong> More Machine Learning
               </li>
               <li>
-                <strong>Next goal:</strong> Launch my productivity app
+                <strong>Next goal:</strong> Win a couple upcoming hackathons
               </li>
             </ul>
           </div>
