@@ -44,3 +44,6 @@ body.dark-mode, html.dark-mode, #root.dark-mode {
   display: inline-flex;
   animation: marquee 25s linear infinite;
 }
+body {
+  @apply font-gill;
+}

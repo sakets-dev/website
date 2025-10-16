@@ -48,11 +48,11 @@ export default function App() {
             darkMode ? "bg-[#1a1a1d]" : "bg-[#f1f2f4]"
           }`}
         >
-          <h1 className="text-4xl font-bold mb-3">Hey! I'm Saket Sharma!</h1>
+          <h1 className="text-4xl font-bold mb-3">Hey, I'm Saket!</h1>
           <div className="space-y-3 leading-relaxed">
             <br />
             <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
-              Hey there, I'm a student at University of Toronto, double majoring in Computer Science and Statistics.
+              I'm Saket Sharma, a student at University of Toronto, double majoring in Computer Science and Statistics.
             </p>
             <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
               I love building products that blend creativity with logic and purpose.
@@ -61,7 +61,7 @@ export default function App() {
               My curiosity drives me to explore everything, from new frameworks to hidden details in everyday design.
             </p>
             <p className={darkMode ? "text-gray-300" : "text-gray-600"}>
-              When I’m not coding, I’m probably reading — lately, I've been reading Freida McFadden's thriller/mystery books.
+              When I’m not coding, I’m probably reading. Recently I've been reading thriller/mystery books.
             </p>
           </div>
         </section>
