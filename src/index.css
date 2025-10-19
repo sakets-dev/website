@@ -2,35 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-/* === GLOBAL BACKGROUND FIX === */
-html, body {
+/* === GLOBAL BACKGROUND + FONT === */
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  transition: background-color 0.5s ease, color 0.5s ease;
+  transition: background-color 1.5s ease-in-out, color 1.5s ease-in-out;
 }
 
-/* Default Light Mode */
-html, body, #root {
+/* Ensure entire React root transitions as one piece */
+#root {
+  min-height: 100%;
+  transition: background-color 1.5s ease-in-out, color 1.5s ease-in-out;
+}
+
+/* === GLOBAL SYNCHRONIZED TRANSITION === */
+* {
+  transition: background-color 1.5s ease-in-out, color 1.5s ease-in-out, border-color 1.5s ease-in-out;
+  transition-delay: 0s; /* ensures everything starts together */
+}
+
+/* Fade-in animation on first load */
+body {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* === LIGHT MODE (DEFAULT) === */
+html,
+body,
+#root {
   background-color: #ffffff;
   color: #1f2937;
 }
 
-/* Dark Mode */
-body.dark-mode, html.dark-mode, #root.dark-mode {
+/* === DARK MODE === */
+html.dark-mode,
+body.dark-mode,
+#root.dark-mode {
   background-color: #0f0f10;
   color: #f1f1f3;
 }
 
-/* Card gradient */
+/* === CARD GRADIENT === */
 .card {
-  background: linear-gradient(180deg, rgba(255,255,255,1), rgba(245,245,245,1));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(245, 245, 245, 1));
+  transition: background-color 1.5s ease-in-out, border-color 1.5s ease-in-out, color 1.5s ease-in-out;
 }
 
-/* Smooth infinite scrolling animation */
+/* === SMOOTH INFINITE SCROLLING ICONS === */
 @keyframes marquee {
   0% {
     transform: translateX(0);
@@ -44,6 +74,20 @@ body.dark-mode, html.dark-mode, #root.dark-mode {
   display: inline-flex;
   animation: marquee 25s linear infinite;
 }
+
+/* === GLOBAL FONT (TAILWIND) === */
 body {
   @apply font-gill;
+}
+
+#root > div {
+  transition-property: background-color, color, border-color;
+  transition-duration: 1.5s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0.15s; /* same as delay-[150ms] above */
+}
+/* === MAIN CONTAINER BACKGROUND SYNC === */
+.main-bg {
+  transition: background-color 1.5s ease-in-out, color 1.5s ease-in-out;
+  transition-delay: 0.15s; /* start slightly after children to align visually */
 }

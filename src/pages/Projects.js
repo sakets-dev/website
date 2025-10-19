@@ -1,22 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 
 export default function Projects({ darkMode }) {
-  const refs = useRef([]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting)
-            e.target.classList.add("opacity-100", "translate-y-0");
-        });
-      },
-      { threshold: 0.2 }
-    );
-    refs.current.forEach(r => r && observer.observe(r));
-    return () => refs.current.forEach(r => r && observer.unobserve(r));
-  }, []);
-
   const projects = [
     {
       title: "Sign Language Interpreter",
@@ -31,6 +15,12 @@ export default function Projects({ darkMode }) {
       tech: "Python, Flask, HTML, CSS, JavaScript",
     },
     {
+      title: "Vision-Controlled Mouse",
+      desc: "A Python application that uses computer vision and hand tracking to control your mouse cursor with hand gestures in real-time.",
+      link: "https://github.com/sakets-dev/vision_controlled_mouse",
+      tech: "Python, OpenCV, MediaPipe, PyAutoGUI, NumPy",
+    },
+    {
       title: "Sticky Note Chrome Extension",
       desc: "A Chrome extension that lets users create and save sticky notes on any webpage — all data persists even after logout.",
       link: "https://github.com/sakets-dev/sticky-note-extension",
@@ -38,14 +28,17 @@ export default function Projects({ darkMode }) {
     },
   ];
 
+  const containerGlow =
+    "transition-colors duration-[1000ms] ease-in-out hover:transition-shadow hover:duration-[200ms]";
+
   return (
-    <div
-      className="min-h-screen flex flex-col items-center px-6 py-16 transition-colors duration-500"
-    >
-      {/* HEADER — Now full width like project cards */}
+    <div className="min-h-screen flex flex-col items-center px-6 py-16 transition-all duration-[1000ms] ease-in-out">
+      {/* HEADER */}
       <div
-        className={`rounded-3xl w-full max-w-6xl text-center mb-10 p-8 shadow-sm transition-colors duration-500 ${
-          darkMode ? "bg-[#1a1a1d] text-gray-200" : "bg-[#f1f2f4] text-gray-800"
+        className={`rounded-3xl w-full max-w-6xl text-center mb-10 p-8 border shadow-sm ${containerGlow} ${
+          darkMode
+            ? "bg-[#202023] border-[#2a2a2d] text-gray-100 hover:shadow-[0_0_40px_rgba(255,255,255,0.15)]"
+            : "bg-[#f1f2f4] border-[#d8d8d8] text-gray-800 hover:shadow-[0_0_50px_rgba(0,0,0,0.25)]"
         }`}
       >
         <h1 className="text-4xl font-bold mb-4">Projects</h1>
@@ -73,11 +66,10 @@ export default function Projects({ darkMode }) {
         {projects.map((p, i) => (
           <div
             key={i}
-            ref={el => (refs.current[i] = el)}
-            className={`opacity-0 translate-y-6 transition-all duration-700 ease-out rounded-3xl p-6 shadow-sm border hover:-translate-y-1 hover:shadow-lg transition-colors duration-500 ${
+            className={`rounded-3xl p-6 border shadow-sm ${containerGlow} ${
               darkMode
-                ? "bg-[#1a1a1d] border-gray-700 text-gray-200"
-                : "bg-[#f1f2f4] border-gray-300 text-gray-800"
+                ? "bg-[#202023] border-[#2a2a2d] text-gray-100 hover:shadow-[0_0_40px_rgba(255,255,255,0.15)]"
+                : "bg-[#f1f2f4] border-[#d8d8d8] text-gray-800 hover:shadow-[0_0_50px_rgba(0,0,0,0.25)]"
             }`}
           >
             <h2 className="text-xl font-semibold mb-2">{p.title}</h2>
@@ -106,13 +98,12 @@ export default function Projects({ darkMode }) {
           </div>
         ))}
 
-        {/* PLACEHOLDER */}
+        {/* Placeholder for future projects */}
         <div
-          ref={el => (refs.current[projects.length] = el)}
-          className={`opacity-0 translate-y-6 transition-all duration-700 ease-out rounded-3xl p-6 shadow-sm border border-dashed flex items-center justify-center text-center italic transition-colors duration-500 ${
+          className={`rounded-3xl p-6 border border-dashed flex items-center justify-center text-center italic ${containerGlow} ${
             darkMode
-              ? "bg-[#1a1a1d] border-gray-600 text-gray-400"
-              : "bg-[#f1f2f4] border-gray-400 text-gray-600"
+              ? "bg-[#202023] border-[#2a2a2d] text-gray-400 hover:shadow-[0_0_40px_rgba(255,255,255,0.15)]"
+              : "bg-[#f1f2f4] border-[#d8d8d8] text-gray-600 hover:shadow-[0_0_50px_rgba(0,0,0,0.25)]"
           }`}
         >
           New projects are in the works...
