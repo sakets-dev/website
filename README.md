@@ -1,4 +1,4 @@
-# 🌐 Saket Sharma — Personal Website
+Saket Sharma - Personal Website
 
 A clean, modern, and minimalistic personal website built using **React**, **Tailwind CSS**, and **Lucide Icons**.  
 This site serves as my digital portfolio — a place where I share who I am, what I build, and what drives my curiosity in technology and design.
