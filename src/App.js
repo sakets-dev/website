@@ -177,7 +177,7 @@ function Home({ darkMode }) {
               <strong>Want to learn:</strong> Airdrop API & Machine Learning
             </li>
             <li>
-              <strong>Next goal:</strong> Win upcoming hackathons
+              <strong>Next goal:</strong> Win cpcoming hackathons
             </li>
           </ul>
         </div>
