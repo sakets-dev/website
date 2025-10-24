@@ -29,6 +29,3 @@ This site serves as my digital portfolio — a place where I share who I am, wha
 | **HTML5 + CSS3** | Semantic layout foundation |
 
 ---
-
-## 📁 Project Structure
-
